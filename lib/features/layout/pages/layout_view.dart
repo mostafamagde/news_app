@@ -17,37 +17,37 @@ class _LayoutViewState extends State<LayoutView> {
   List<CategoryData> categoryDataList = [
     CategoryData(
       categoryName: "Sports",
-      categoryId: "Sports",
+      categoryId: "sports",
       categoryImage: "assets/images/sports.png",
       categoryColor: const Color(0xFFC91C22),
     ),
     CategoryData(
       categoryName: "Politics",
-      categoryId: "Politics",
+      categoryId: "politics",
       categoryImage: "assets/images/Politics.png",
       categoryColor: const Color(0xFF003E90),
     ),
     CategoryData(
       categoryName: "Health",
-      categoryId: "Health",
+      categoryId: "health",
       categoryImage: "assets/images/health.png",
       categoryColor: const Color(0xFFED1E79),
     ),
     CategoryData(
       categoryName: "Business",
-      categoryId: "Business",
+      categoryId: "business",
       categoryImage: "assets/images/bussines.png",
       categoryColor: const Color(0xFFCF7E48),
     ),
     CategoryData(
       categoryName: "Environment",
-      categoryId: "Environment",
+      categoryId: "environment",
       categoryImage: "assets/images/environment.png",
       categoryColor: const Color(0xFF4882CF),
     ),
     CategoryData(
       categoryName: "Science",
-      categoryId: "Science",
+      categoryId: "science",
       categoryImage: "assets/images/science.png",
       categoryColor: const Color(0xFFF2D352),
     ),
