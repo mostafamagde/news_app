@@ -40,6 +40,12 @@ class AppThemeManager {
           fontSize: 22,
           fontWeight: FontWeight.w700,
           fontFamily: "Poppins"),
+      bodySmall: TextStyle(
+        fontFamily: "Exo",
+        fontWeight: FontWeight.w400,
+        fontSize: 14,
+        color: ColorPallete.primaryLightColor,
+      ),
     ),
   );
 }

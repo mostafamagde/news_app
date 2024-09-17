@@ -1,45 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/features/layout/widgets/tab_bar_item.dart';
 
-import '../../../models/category_data.dart';
+import '../../../models/sources_model.dart';
 
-class CategoryView extends StatelessWidget {
-  const CategoryView({
-    super.key,
-    required this.data, required this.index,
-  });
-final int index;
-  final CategoryData data;
+class CategoryView extends StatefulWidget {
+  final List<Source> sourceList;
+
+  const CategoryView({super.key, required this.sourceList});
+
+  @override
+  State<CategoryView> createState() => _CategoryViewState();
+}
+
+class _CategoryViewState extends State<CategoryView> {
+  int selected = 0;
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    return InkWell(
-      onTap: () {
-
-      },
-      child: Container(
-      padding: const EdgeInsets.all(10),
-        decoration:  BoxDecoration(
-          color: data.categoryColor,
-          borderRadius:  BorderRadius.only(
-           topLeft: const Radius.circular(25),
-           topRight: const Radius.circular(25),
-           bottomLeft:  index%2==0? const Radius.circular(25):const Radius.circular(0),
-           bottomRight: index%2==0? const Radius.circular(0):const Radius.circular(25),
+    return Column(
+      children: [
+        DefaultTabController(
+          length: widget.sourceList.length,
+          child: TabBar(
+            tabAlignment: TabAlignment.start,
+            padding: const EdgeInsets.all(8),
+            labelPadding: const EdgeInsets.symmetric(horizontal: 6),
+            dividerColor: Colors.transparent,
+            isScrollable: true,
+            indicatorColor: Colors.transparent,
+            indicatorPadding: EdgeInsets.zero,
+            onTap: (value) {
+              setState(() {
+                selected = value;
+              });
+            },
+            tabs: widget.sourceList
+                .map(
+                  (toElement) => TabBarItem(
+                    source: toElement,
+                    isSelected:
+                        selected == widget.sourceList.indexOf(toElement),
+                  ),
+                )
+                .toList(),
           ),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Image.asset(data.categoryImage),
-            ),
-            Text(
-              data.categoryName,
-              style: theme.textTheme.titleMedium,
-            )
-          ],
-        ),
-      ),
+        )
+      ],
     );
   }
 }

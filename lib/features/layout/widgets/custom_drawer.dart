@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:news_app/core/theme/color_pallete.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  final void Function() onClick;
+  final void Function() onSettingClick;
+
+  const CustomDrawer({
+    super.key,
+    required this.onClick,
+    required this.onSettingClick,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +33,7 @@ class CustomDrawer extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-
+            onClick();
           },
           child: Row(
             children: [
@@ -53,7 +60,7 @@ class CustomDrawer extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-
+            onSettingClick();
           },
           child: Row(
             children: [

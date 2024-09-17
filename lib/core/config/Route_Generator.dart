@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:news_app/features/setting_view/pages/setting_view.dart';
 
 import '../../features/layout/pages/layout_view.dart';
 import '../../features/splash/pages/splash.dart';
@@ -18,6 +17,12 @@ class RouteGenerator {
       case PageRoutes.layout:
         return MaterialPageRoute(
           builder: (context) => const LayoutView(),
+          settings: settings,
+        );
+
+      case PageRoutes.setting:
+        return MaterialPageRoute(
+          builder: (context) => const SettingView(),
           settings: settings,
         );
       default:
