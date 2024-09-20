@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:news_app/core/config/constants.dart';
 import 'package:news_app/models/sources_model.dart';
 
+import '../../models/article_model.dart';
+
 class ApiManager {
   static Future<List<Source>> fetchSourcesList(String category) async {
     var url = Uri.https(Constants.domain, "/v2/top-headlines/sources", {
@@ -19,5 +21,25 @@ class ApiManager {
     } else {
       throw Exception('Failed to fetch sources list');
     }
+  }
+  static Future<List<Article>> fetchArticleList(String source) async {
+    var url = Uri.https(
+      Constants.domain,
+      "/v2/top-headlines",
+      {
+        "sources": source,
+        "apiKey": Constants.apiKey,
+      }
+    );
+    final response =await http.get(url);
+    if(response.statusCode==200){
+      var data = jsonDecode(response.body);
+      var article = ArticleModel.fromJson(data);
+      return article.articles;
+    }
+    else {
+      throw Exception('Failed to fetch article list');
+    }
+
   }
 }
